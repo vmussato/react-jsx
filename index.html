@@ -23,15 +23,30 @@
 
     <script type="text/babel">
 
-        function Titulo() {
+        function Titulo({ children }) {
             return (
-                <h1 className="form__titulo">Login</h1>
+                <h1 className="form__titulo">{children}</h1>
             )
         }
 
-        function Subtitulo() {
+        function Subtitulo({ children }) {
             return (
-                <h2 className="form__texto">Boas-vindas. Faça seu login.</h2>
+                <h2 className="form__texto">{ children }</h2>
+            )
+        }
+
+        function CampoDeDigitacao({label, tipo, placeholder}) {
+            return (
+                <div className="form__campo-digitacao">
+                    <label for="email">{label}</label>
+                    <input type={tipo} placeholder={placeholder} required id="email"/>
+                </div>
+            )
+        }
+
+        function Botao({children}) {
+            return (
+                <button className="form__botao" type="Submit">{ children }</button>
             )
         }
 
@@ -41,16 +56,11 @@
                     <img src="./img/imagem-login.png" alt="Mulher negra de cabelos crespos usando óculos e mexendo no computador e logo da code connect" />
                     <section>
                         <form action="">
-                            <Titulo />
-                            <Subtitulo />
-                            <div className="form__campo-digitacao">
-                                <label for="email">E-mail ou usuário</label>
-                                <input type="email" placeholder="Digite o seu e-mail ou usuário" required id="email"/>
-                            </div>
-                            <div className="form__campo-digitacao">
-                                <label for="senha">Senha</label>
-                                <input type="password" placeholder="Digite sua senha" required id="senha"/>
-                            </div>
+                            <Titulo>Login</Titulo>
+                            <Subtitulo>Boas-Vindas! Faça seu login</Subtitulo>
+                            <CampoDeDigitacao label="E-mail ou usuário" tipo="email" placeholder="Digite o seu e-mail ou usuário" />
+                            <CampoDeDigitacao label="Senha" tipo="password" placeholder="Digite sua senha" />
+                            <Botao>Login</Botao>
                         </form>
                     </section>
                 </div>   
