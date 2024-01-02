@@ -35,11 +35,11 @@
             )
         }
 
-        function CampoDeDigitacao({label, tipo, placeholder}) {
+        function CampoDeDigitacao({label, tipo, placeholder, value, setValor}) {
             return (
                 <div className="form__campo-digitacao">
                     <label for="email">{label}</label>
-                    <input type={tipo} placeholder={placeholder} required id="email"/>
+                    <input type={tipo} placeholder={placeholder} required id="email" value={value} onChange={(evento) => setValor(evento.target.value)}/>
                 </div>
             )
         }
@@ -51,6 +51,10 @@
         }
 
         function PaginaDeLogin() {
+
+            const [email, setEmail] = React.useState('');
+            const [senha, setSenha] = React.useState('');
+
             return (
                 <div className="container-login">
                     <img src="./img/imagem-login.png" alt="Mulher negra de cabelos crespos usando óculos e mexendo no computador e logo da code connect" />
@@ -58,8 +62,8 @@
                         <form action="">
                             <Titulo>Login</Titulo>
                             <Subtitulo>Boas-Vindas! Faça seu login</Subtitulo>
-                            <CampoDeDigitacao label="E-mail ou usuário" tipo="email" placeholder="Digite o seu e-mail ou usuário" />
-                            <CampoDeDigitacao label="Senha" tipo="password" placeholder="Digite sua senha" />
+                            <CampoDeDigitacao label="E-mail ou usuário" tipo="email" placeholder="Digite o seu e-mail ou usuário" value={email} setValor={setEmail}/>
+                            <CampoDeDigitacao label="Senha" tipo="password" placeholder="Digite sua senha" value={senha} setValor={setSenha} />
                             <Botao>Login</Botao>
                         </form>
                     </section>
